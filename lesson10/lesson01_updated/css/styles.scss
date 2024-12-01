@@ -1,0 +1,126 @@
+$bg-color: #202020;
+$ft-color: #faead6;
+
+$tablet: 900px;
+
+@mixin tablet{
+    @media (max-width: #{$tablet}) {
+        @content;
+    }
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: Georgia, serif;
+    color: $ft-color;
+    height: 100%;
+}
+
+.background-title {
+    background: url(../images/photo5.jpg);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+.title-section {
+    max-width: 900px;
+    justify-content: space-between;
+
+    @include tablet {
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+.profile-photo {
+    border-style: double;
+    border-width: 10px;
+    width: 300px;
+    height: 300px;
+}
+
+h1 {
+    font-size: 75px;
+    text-shadow: 0 0 15px #000000;
+}
+
+.scroll-down {
+    left: calc(50% - 35px);
+    bottom: 10vh;
+    width: 50px;
+    height: 50px;
+    border-bottom: 10px solid #fff;
+    border-right: 10px solid #fff;
+    transform: translate(-50%, 0%) rotate(45deg);
+    animation: fade-scroll-down 5s ease-in-out infinite;
+}
+  
+@keyframes fade-scroll-down {
+    0%   { transform:translate(0,-20px) rotate(45deg); opacity: 0;  }
+    30%  { opacity: 1;  }
+    70%  { opacity: 1;  }
+    100% { transform:translate(0,20px) rotate(45deg); opacity: 0; }
+}
+
+.add_color {
+    background-color: $bg-color;
+}
+
+.image-highlight {
+    opacity: 50%;
+    transition: opacity 2.5s ease-in-out;
+}
+
+.image-highlight:hover {
+    opacity: 100%;
+}
+
+.image-description {
+    bottom: 2vh;
+    background-color: $bg-color;
+}
+
+.highlight-paragraph {
+    padding: 2vw;
+
+    h2 {
+        font-size: max(18px, 1.5vw);
+    }
+
+    p, li {
+        font-size: max(16px, 1vw);
+    }
+}
+
+.col-breackpoint {
+    @include tablet {
+        flex-shrink: 0;
+        width: 100%;
+    }
+}
+
+.flip-rows {
+    @include tablet {
+        flex-direction: column-reverse;
+    }
+}
+
+.fade-in-image {
+    scale: .1;
+    opacity: 0;
+    animation: fade-in-animation ease-in forwards;
+    animation-timeline: view();
+    animation-range: entry;
+}
+
+@keyframes fade-in-animation {
+    100% {
+        opacity: 100%;
+        scale: 1;
+    }
+}
